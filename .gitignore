@@ -1,1 +1,9 @@
 env
+.env
+__pycache__/email.cpython-39.pyc
+__pycache__/erase.cpython-39.pyc
+__pycache__/getData.cpython-39.pyc
+__pycache__/getStats.cpython-39.pyc
+__pycache__/obv.cpython-39.pyc
+__pycache__/sendEmail.cpython-39.pyc
+*.csv
