@@ -9,18 +9,17 @@ from sendEmail import sendEmail
 # Set Up
 dirname = os.path.dirname(__file__)
 folder = os.path.join(dirname, 'Daily_Stock_Report\\Stocks')
-stocks = ["VOO", "AMZN", "NVDA"]
+stocks = ["GOOG", "AMZN", "NVDA"]
 
 # Removes old Stock Folder and recreates it to remove old stocks
 erase(folder)
 
 # Get Stock Data
-getData(stocks)
+getData(stocks, dirname)
 
 # Perform OBV Analysis
-getStats(folder, dirname)
+# getStats(folder, dirname)
 
 # Send email report to your gmail
 # sendEmail(dirname)
 
-print("Report sent!")

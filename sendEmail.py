@@ -34,3 +34,4 @@ def sendEmail(dirname):
     toaddrs  = os.getenv('EMAIL')
     server.sendmail(fromaddr,toaddrs,message.as_string())
     server.quit()
+    print("Report sent!")
