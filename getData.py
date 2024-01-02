@@ -19,7 +19,6 @@ def getData(stocks, dirname):
     # Iterate through stocks and retrieve data
     i = 0
     data ={
-        "trailingPE": [],
         "beta": [],
         "priceToBook": [],
         "pegRatio": [],
@@ -41,12 +40,11 @@ def getData(stocks, dirname):
             stock_data = stock.info
             
             # Store stock data
-            data["trailingPE"].append(stock_data["trailingPE"])
-            data["beta"].append(stock_data["beta"])
-            data["priceToBook"].append(stock_data["priceToBook"])
-            data["pegRatio"].append(stock_data["pegRatio"])
-            data["debtToEquity"].append(stock_data["debtToEquity"])
-            data["returnOnEquity"].append(stock_data["returnOnEquity"])
+            data["beta"].append(round(stock_data["beta"], 2))
+            data["priceToBook"].append(round(stock_data["priceToBook"], 2))
+            data["pegRatio"].append(round(stock_data["pegRatio"], 2))
+            data["debtToEquity"].append(round(stock_data["debtToEquity"], 2))
+            data["returnOnEquity"].append(round(stock_data["returnOnEquity"], 2))
             data["freeCashflow"].append(stock_data["freeCashflow"])
 
             time.sleep(2)  # Sleep for 2 seconds to not overload API
@@ -62,8 +60,10 @@ def getData(stocks, dirname):
             Stock_Failure += 1
             Failed_Stocks.append(stocks[i])
             stocks.pop(i)
-    df = pd.DataFrame(data, index=stocks)
-    df.to_csv(os.path.join(dirname, 'Daily_Stock_Report\\Indicators.csv'))
+    df = pd.DataFrame(data, index= stocks)
+    df.reset_index(inplace=True)
+    df.rename(columns={'index': 'Stocks'}, inplace=True)
+    df.to_csv(os.path.join(dirname, 'Daily_Stock_Report\\Indicators.csv'), index=False)
     print("The amount of stocks we successfully imported: " +
           str(i - Stocks_Not_Imported))
     if Stocks_Not_Imported > 0:

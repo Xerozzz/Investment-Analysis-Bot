@@ -11,8 +11,9 @@ from get_all_tickers import get_tickers as gt
 
 # Import python files
 from getData import getData
-from getStats import getStats
-from sendEmail import sendEmail
+# from getStats import getStats
+# from sendEmail import sendEmail
+# from analysis import analysis
 
 # Set Up
 # Check if stock folder exists, if not create it
@@ -27,6 +28,9 @@ stocks = ["GOOG", "AMZN", "NVDA"]
 
 # Get Stock Data
 getData(stocks, dirname)
+
+# Perform Analysis
+# analysis(folder)
 
 # Perform OBV Analysis
 # getStats(folder, dirname)
