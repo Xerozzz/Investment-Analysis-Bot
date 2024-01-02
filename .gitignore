@@ -7,3 +7,4 @@ __pycache__/getStats.cpython-39.pyc
 __pycache__/obv.cpython-39.pyc
 __pycache__/sendEmail.cpython-39.pyc
 *.csv
+*.pyc
