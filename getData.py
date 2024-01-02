@@ -11,11 +11,6 @@ def getData(stocks, dirname):
     # Iterate through stocks and retrieve data
     i = 0
     data ={
-        "previousClose": [],
-        "open": [],
-        "dayLow": [],
-        "dayHigh": [],
-        "volume": [],
         "trailingPE": [],
         "beta": [],
         "priceToBook": [],
@@ -31,11 +26,6 @@ def getData(stocks, dirname):
             stock_data = stock.info
             
             # Store stock data
-            data["previousClose"].append(stock_data["previousClose"])
-            data["open"].append(stock_data["open"])
-            data["dayLow"].append(stock_data["dayLow"])
-            data["dayHigh"].append(stock_data["dayHigh"])
-            data["volume"].append(stock_data["volume"])
             data["trailingPE"].append(stock_data["trailingPE"])
             data["beta"].append(stock_data["beta"])
             data["priceToBook"].append(stock_data["priceToBook"])
