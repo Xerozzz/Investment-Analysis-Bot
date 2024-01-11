@@ -12,8 +12,9 @@ from get_all_tickers import get_tickers as gt
 # Import python files
 from getData import getData
 # from getStats import getStats
-# from sendEmail import sendEmail
-# from analysis import analysis
+from sendEmail import sendEmail
+from analysis import analysis
+from pdf import pdf
 
 # Set Up
 # Check if stock folder exists, if not create it
@@ -21,6 +22,8 @@ if not (os.path.exists("Daily_Stock_Report")):
     os.makedirs("Daily_Stock_Report")
 if not (os.path.exists("Daily_Stock_Report\\Stocks")):
     os.makedirs("Daily_Stock_Report\\Stocks")
+if not (os.path.exists("Daily_Stock_Report\\Reports")):
+    os.makedirs("Daily_Stock_Report\\Reports")
 
 dirname = os.path.dirname(__file__)
 folder = os.path.join(dirname, 'Daily_Stock_Report\\Stocks')
@@ -30,10 +33,10 @@ stocks = ["GOOG", "AMZN", "NVDA"]
 getData(stocks, dirname)
 
 # Perform Analysis
-# analysis(folder)
+indicators, objects = analysis(dirname, folder)
 
-# Perform OBV Analysis
-# getStats(folder, dirname)
+# Generate Report
+pdf(indicators, objects, dirname)
 
 # Send email report to your gmail
-# sendEmail(dirname)
+sendEmail(dirname)
