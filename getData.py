@@ -24,7 +24,6 @@ def getData(stocks, dirname):
         "pegRatio": [],
         "debtToEquity": [],
         "returnOnEquity": [],
-        "freeCashflow": [],
     }
 
     while (i < len(stocks)) and (API_Calls < 1800):
@@ -45,7 +44,6 @@ def getData(stocks, dirname):
             data["pegRatio"].append(round(stock_data["pegRatio"], 2))
             data["debtToEquity"].append(round(stock_data["debtToEquity"], 2))
             data["returnOnEquity"].append(round(stock_data["returnOnEquity"], 2))
-            data["freeCashflow"].append(stock_data["freeCashflow"])
 
             time.sleep(2)  # Sleep for 2 seconds to not overload API
             API_Calls += 1
