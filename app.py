@@ -30,7 +30,7 @@ folder = os.path.join(dirname, 'Daily_Stock_Report\\Stocks')
 stocks = ["GOOG", "AMZN", "NVDA"]
 
 # Get Stock Data
-getData(stocks, dirname)
+# stocks = getData(stocks, dirname)
 
 # Perform Analysis
 indicators, objects = analysis(dirname, folder)

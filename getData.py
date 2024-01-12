@@ -70,3 +70,4 @@ def getData(stocks, dirname):
         print("These stocks failed to import: " + str(Failed_Stocks))
     else:
         print("All stocks were successfully imported")
+    return stocks

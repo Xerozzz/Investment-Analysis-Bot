@@ -1,3 +1,6 @@
+import pandas as pd
+import os
+
 tests = {
     "signal": "Healthy",
     "d/e": "Healthy",
@@ -12,22 +15,22 @@ objects = {
 
 }
 
-import os
-import pandas as pd
 
 # Set pandas display options
 pd.set_option('display.float_format', '{:.2f}'.format)
 
+
 def analysis(dirname, folder):
     stocks = os.listdir(folder)
-    indicators = pd.read_csv(os.path.join(dirname, 'Daily_Stock_Report\\Indicators.csv'), index_col='Stocks')
-    
+    indicators = pd.read_csv(os.path.join(
+        dirname, 'Daily_Stock_Report\\Indicators.csv'), index_col='Stocks')
+
     for i in stocks:
         test = tests.copy()
         stock = os.path.splitext(i)[0]
         df = pd.read_csv(os.path.join(folder, i))
         values = indicators.loc[stock]
-        
+
         prev = df.iloc[-2].tolist()[4]
         current = df.iloc[-1].tolist()[4]
 
@@ -42,7 +45,7 @@ def analysis(dirname, folder):
         if values["debtToEquity"] > 1:
             test["d/e"] = "ALERT"
         if values["returnOnEquity"] < 0.1:
-            test["roe"] = "ALERT"            
+            test["roe"] = "ALERT"
         objects[stock] = test
-        
+
     return indicators, objects
