@@ -10,3 +10,4 @@ __pycache__/sendEmail.cpython-39.pyc
 *.pyc
 Daily_Stock_Report/Reports/report_110124.pdf
 Daily_Stock_Report/Graphs/*
+*.pdf
